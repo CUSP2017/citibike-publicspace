@@ -1,0 +1,85 @@
+name: citibike-publicspace
+dependencies:
+- cligj=0.4.0=py27_0
+- conda-forge::click=6.6=py27_1
+- conda-forge::click-plugins=1.0.3=py27_0
+- conda-forge::curl=7.49.1=1
+- conda-forge::descartes=1.0.2=py27_0
+- conda-forge::expat=2.1.0=2
+- conda-forge::fiona=1.7.0=np111py27_2
+- conda-forge::freexl=1.0.2=1
+- conda-forge::gdal=2.1.1=np111py27_2
+- conda-forge::geopandas=0.2.1=py27_0
+- conda-forge::geopy=1.10.0=py27_0
+- conda-forge::geos=3.4.2=2
+- conda-forge::giflib=5.1.4=0
+- conda-forge::hdf4=4.2.12=0
+- conda-forge::hdf5=1.8.17=6
+- conda-forge::jpeg=9b=0
+- conda-forge::json-c=0.12=0
+- conda-forge::kealib=1.4.6=3
+- conda-forge::libdap4=3.18.0=2
+- conda-forge::libgfortran=3.0.0=0
+- conda-forge::libiconv=1.14=3
+- conda-forge::libnetcdf=4.4.1=0
+- conda-forge::libpq=9.5.4=2
+- conda-forge::libspatialindex=1.8.5=1
+- conda-forge::libspatialite=4.3.0a=9
+- conda-forge::libtiff=4.0.6=5
+- conda-forge::libuuid=1.0.3=1
+- conda-forge::libxml2=2.9.3=6
+- conda-forge::munch=2.0.4=py27_0
+- conda-forge::openjpeg=2.1.0=6
+- conda-forge::proj.4=4.9.2=0
+- conda-forge::psycopg2=2.6.2=py27_1
+- conda-forge::pyproj=1.9.5.1=py27_0
+- conda-forge::pysal=1.12.0=py27_0
+- conda-forge::rtree=0.8.2=py27_0
+- conda-forge::shapely=1.5.17=np111py27_0
+- conda-forge::xz=5.0.5=1
+- cycler=0.10.0=py27_0
+- freetype=2.5.5=1
+- icu=54.1=0
+- libpng=1.6.22=0
+- matplotlib=1.5.3=np111py27_0
+- mkl=11.3.3=0
+- numpy=1.11.2=py27_0
+- openssl=1.0.2j=0
+- pandas=0.19.0=np111py27_0
+- patsy=0.4.1=py27_0
+- pip=8.1.2=py27_0
+- pyparsing=2.1.4=py27_0
+- pyqt=5.6.0=py27_0
+- python=2.7.12=1
+- python-dateutil=2.5.3=py27_0
+- pytz=2016.7=py27_0
+- qt=5.6.0=0
+- readline=6.2=2
+- scipy=0.18.1=np111py27_0
+- seaborn=0.7.1=py27_0
+- setuptools=27.2.0=py27_0
+- sip=4.18=py27_0
+- six=1.10.0=py27_0
+- sqlalchemy=1.0.13=py27_0
+- sqlite=3.13.0=0
+- statsmodels=0.6.1=np111py27_1
+- tk=8.5.18=0
+- wheel=0.29.0=py27_0
+- xerces-c=3.1.4=0
+- zlib=1.2.8=3
+- pip:
+  - click==6.6
+  - click-plugins==1.0.3
+  - descartes==1.0.2
+  - fiona==1.7.0.post2
+  - gdal==2.1.1
+  - geopandas==0.2.1
+  - geopy==1.10.0
+  - munch==2.0.4
+  - psycopg2==2.6.2
+  - pyproj==1.9.5.1
+  - pysal==1.12.0
+  - rtree==0.8.2
+  - shapely==1.5.17
+prefix: /Users/Danny1/anaconda/envs/citibike-publicspace
+
