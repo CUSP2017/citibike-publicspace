@@ -1,4 +1,4 @@
-citibike-publicspace
+# citibike-publicspace
 ==============================
 
 Quantifying the value of public space through Citibike station ridership.
@@ -54,3 +54,10 @@ Project Organization
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+
+### Project Notes
+------------------------------
+
+* The area of public space considered for this study was determined to be approximately a 185' radius around each Citibike Station
+
