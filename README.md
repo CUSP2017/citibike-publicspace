@@ -60,4 +60,5 @@ Project Organization
 ------------------------------
 
 * The area of public space considered for this study was determined to be approximately a 185' radius around each Citibike Station
+* The datasets used for this analysis were created in 2015 and 2016
 
