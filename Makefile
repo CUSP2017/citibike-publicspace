@@ -13,4 +13,4 @@ download_data: requirements
 	python pull_data.py
 
 process_data:
-	python src/data/0.1-kz-citibike-stations.py
+	python scripts/process-stations.py
