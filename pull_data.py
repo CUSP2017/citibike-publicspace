@@ -36,17 +36,20 @@ if not os.path.isfile(trees_file):
             if chunk:
                 f.write(chunk)
 
-# Stree Assessment
-streets_file = dl_path + "/street-assessment.geojson"
-if not os.path.isfile(streets_file):
-    print("Downloading Street Assessment")
-    r = requests.get('http://www.nyc.gov/html/dot/downloads/misc/street-assessment-rating.geojson',
+# Street Assessment
+street_assessment_zip = dl_path + "/street-assessment.zip"
+if not os.path.isfile(street_assessment_zip):
+    print("Downloading ")
+    r = requests.get('http://www.nyc.gov/html/dot/downloads/misc/street-assessment-rating.zip',
                      stream=True)
 
-    with open(streets_file, 'wb') as f:
+    with open(street_assessment_zip, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
+
+    zip = zipfile.ZipFile(street_assessment_zip)
+    zip.extractall(dl_path + '/street-assessment')
 
 # Subway Entrances
 subway_file = dl_path + "/subway-entrances.geojson"
