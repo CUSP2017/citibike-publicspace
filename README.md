@@ -1,10 +1,28 @@
-citibike-publicspace
-==============================
+# Understanding the value of Public Space with Citibike Riderships
 
-Quantifying the value of public space through Citibike station ridership.
+## Getting Started
 
-Project Organization
-------------
+1. Download the data
+To download the raw, external data, first run in the root directory of this project:
+
+```
+make download_data
+```
+
+This will create a collection of directories under `data/` that will store all
+external and processed data. This may take a few minutes depending on the
+speed of your internet.
+
+2. Process the data
+Next, run:
+
+```
+make process_data
+```
+
+This will generate the base CSV of Citibike stations.
+
+## Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
@@ -14,10 +32,6 @@ Project Organization
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -36,21 +50,12 @@ Project Organization
     │   │
     │   ├── data           <- Scripts to download or generate data
     │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 
+## Project Notes
 
---------
+* The area of public space considered for this study was determined to be approximately a 185' radius around each Citibike Station
+* The datasets used for this analysis were created in 2015 and 2016
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Attributions
+
+- The directory structure of this project was inspired by the [Cookie Cutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) project.
