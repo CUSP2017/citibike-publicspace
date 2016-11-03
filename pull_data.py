@@ -57,6 +57,12 @@ files = [
         "url": "https://www.dot.ny.gov/divisions/engineering/applications/traffic-data-viewer/traffic-data-viewer-repository/TDV_Shapefile_AADT_2015.zip",
         "params": {},
         "zip": "nyc-traffic"
+    },
+    {
+        "name": "parks.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/rjaj-zgq7",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
     }
 ]
 
