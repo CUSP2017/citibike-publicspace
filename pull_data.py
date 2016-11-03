@@ -63,6 +63,12 @@ files = [
         "url": "https://data.cityofnewyork.us/api/geospatial/rjaj-zgq7",
         "params": {"method": "export", "format": "GeoJSON"},
         "zip": False
+    },
+    {
+        "name": "subway-entrances.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/drex-xx56",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
     }
 ]
 
