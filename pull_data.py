@@ -1,7 +1,10 @@
 import os
-import glob
 import requests
 import zipfile
+
+# Hide InsecureRequestWarning
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 project_dir = os.path.dirname(__file__)
 dl_path = os.path.join(project_dir, "data/external")
@@ -11,102 +14,90 @@ for d in ["data", "data/external", "data/interim", "data/processed"]:
     if not os.path.exists(d):
         os.makedirs(d)
 
-# Citibike stations
-citibike_file = dl_path + "/citibike-stations.json"
-if not os.path.isfile(citibike_file):
-    print("Downloading Citibike stations")
-    r = requests.get('https://feeds.citibikenyc.com/stations/stations.json',
-                     stream=True)
+files = [
+    {
+        "name": "citibike-stations.json",
+        "url": "https://feeds.citibikenyc.com/stations/stations.json",
+        "params": {},
+        "zip": False
+    },
+    {
+        "name": "tree-canopy.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/pi5s-9p35",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
+    },
+    {
+        "name": "street-assessment.zip",
+        "url": "http://www.nyc.gov/html/dot/downloads/misc/street-assessment-rating.zip",
+        "params": {},
+        "zip": "street-assessment"
+    },
+    {
+        "name": "subway-entrances.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/drex-xx56",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
+    },
+    {
+        "name": "bike-lanes.zip",
+        "url": "http://www.nyc.gov/html/dot/downloads/misc/nyc-bike-routes.zip",
+        "params": {},
+        "zip": "bike-lanes"
+    },
+    {
+        "name": "nyc-boroughs.zip",
+        "url": "http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/nybb_16c.zip",
+        "params": {},
+        "zip": "nyc-boroughs"
+    },
+    {
+        "name": "nyc-traffic.zip",
+        "url": "https://www.dot.ny.gov/divisions/engineering/applications/traffic-data-viewer/traffic-data-viewer-repository/TDV_Shapefile_AADT_2015.zip",
+        "params": {},
+        "zip": "nyc-traffic"
+    },
+    {
+        "name": "parks.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/rjaj-zgq7",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
+    },
+    {
+        "name": "subway-entrances.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/drex-xx56",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
+    }
+]
 
-    with open(citibike_file, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
+def download(arg):
+    save_path = dl_path + "/" + arg["name"]
+    if not os.path.isfile(save_path):
+        print("Downloading " + arg["name"])
+        r = requests.get(arg["url"], params=arg["params"], stream=True, verify=False)
+        with open(save_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
 
-# Tree Canopy
-trees_file = dl_path + "/tree-canopy.geojson"
-if not os.path.isfile(trees_file):
-    print("Downloading Tree Canopy")
-    r = requests.get('https://data.cityofnewyork.us/api/geospatial/pi5s-9p35',
-                     params={"method": "export", "format": "GeoJSON"},
-                     stream=True)
+        if arg["zip"]:
+            zip = zipfile.ZipFile(save_path)
+            zip.extractall(dl_path + '/' + arg["zip"])
 
-    with open(trees_file, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
+# Run the download for the files
+for f in files:
+    download(f)
 
-# Street Assessment
-street_assessment_zip = dl_path + "/street-assessment.zip"
-if not os.path.isfile(street_assessment_zip):
-    print("Downloading ")
-    r = requests.get('http://www.nyc.gov/html/dot/downloads/misc/street-assessment-rating.zip',
-                     stream=True)
+# Download citibike ridership for 2015
+citibike_months = ["201501", "201502", "201503", "201504", "201505", "201506",
+                   "201507", "201508", "201509", "201510", "201511", "201512"]
+citibike_data_files = [month + "-citibike-tripdata.zip" for month in citibike_months]
 
-    with open(street_assessment_zip, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-
-    zip = zipfile.ZipFile(street_assessment_zip)
-    zip.extractall(dl_path + '/street-assessment')
-
-# Subway Entrances
-subway_file = dl_path + "/subway-entrances.geojson"
-if not os.path.isfile(subway_file):
-    print("Downloading Subway Entrances")
-    r = requests.get('https://data.cityofnewyork.us/api/geospatial/drex-xx56',
-                     params={"method": "export", "format": "GeoJSON"},
-                     stream=True)
-
-    with open(subway_file, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-
-# Bike Routes
-bike_zip = dl_path + "/bike-lanes.zip"
-if not os.path.isfile(bike_zip):
-    print("Downloading Bike Lanes")
-    r = requests.get('http://www.nyc.gov/html/dot/downloads/misc/nyc-bike-routes.zip',
-                     stream=True)
-
-    with open(bike_zip, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-
-    zip = zipfile.ZipFile(bike_zip)
-    zip.extractall(dl_path + '/bike-lanes')
-
-# Traffic Short Counts
-traffic_short_zip = dl_path + "/traffic-short-counts.zip"
-if not os.path.isfile(traffic_short_zip):
-    print("Downloading Traffic Short Counts")
-    r = requests.get('https://www.dot.ny.gov/divisions/engineering/applications/traffic-data-viewer/traffic-data-viewer-repository/TDV_Shapefile_Short_Counts_2014.zip',
-                     params={"accessType": "DOWNLOAD"},
-                     stream=True)
-
-    with open(traffic_short_zip, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-
-    zip = zipfile.ZipFile(traffic_short_zip)
-    zip.extractall(dl_path + '/traffic-short-counts')
-
-# Traffic Continuous Counts
-traffic_continuous_zip = dl_path + "/traffic-continuous-counts.zip"
-if not os.path.isfile(traffic_continuous_zip):
-    print("Downloading Traffic Continuous Counts")
-    r = requests.get('https://www.dot.ny.gov/divisions/engineering/applications/traffic-data-viewer/traffic-data-viewer-repository/TDV_Shapefile_Continuous_Counts_2014.zip',
-                     params={"accessType": "DOWNLOAD"},
-                     stream=True)
-
-    with open(traffic_continuous_zip, 'wb') as f:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-
-    zip = zipfile.ZipFile(traffic_continuous_zip)
-    zip.extractall(dl_path + '/traffic-continuous-counts')
+for citi in citibike_data_files:
+    download({
+        "name": citi,
+        "url": "https://s3.amazonaws.com/tripdata/" + citi,
+        "params": {},
+        "zip": "ridership"
+    })
