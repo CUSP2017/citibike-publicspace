@@ -10,7 +10,5 @@ requirements:
 	pip install -q -r requirements.txt
 
 download_data: requirements
-	python pull_data.py
-
-process_data:
 	python scripts/process-stations.py
+	python pull_data.py
