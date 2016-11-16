@@ -2,7 +2,16 @@
 
 ## Getting Started
 
-1. Download the data
+1. Set up your environment variables
+Copy the .env example
+
+```
+cp .env-example .env
+```
+
+Edit `.env`, adding a Google Geocoding API Key that can be acquired [here](https://developers.google.com/maps/documentation/geocoding/intro).
+
+2. Download the data
 To download the raw, external data, first run in the root directory of this project:
 
 ```
@@ -12,15 +21,6 @@ make download_data
 This will create a collection of directories under `data/` that will store all
 external and processed data. This may take a few minutes depending on the
 speed of your internet.
-
-2. Process the data
-Next, run:
-
-```
-make process_data
-```
-
-This will generate the base CSV of Citibike stations.
 
 ## Project Organization
 

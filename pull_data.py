@@ -68,6 +68,18 @@ files = [
         "url": "https://data.cityofnewyork.us/api/geospatial/drex-xx56",
         "params": {"method": "export", "format": "GeoJSON"},
         "zip": False
+    },
+    {
+        "name": "census-tracts.geojson",
+        "url": "https://data.cityofnewyork.us/api/geospatial/fxpq-c8ku",
+        "params": {"method": "export", "format": "GeoJSON"},
+        "zip": False
+    },
+    {
+        "name": "nyc-population-census.csv",
+        "url": "https://data.cityofnewyork.us/api/views/37cg-gxjd/rows.csv",
+        "params": {},
+        "zip": False
     }
 ]
 
