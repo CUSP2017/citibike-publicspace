@@ -60,6 +60,8 @@ our findings.
 
 ## Data Sources
 
+| Data                       | Source                                                                                                             |
+|:---------------------------|:-------------------------------------------------------------------------------------------------------------------|
 | Citi Bike Docking Stations | [Citi Bike System Data](https://www.citibikenyc.com/system-data)                                                   |
 | Street Assessment Ratings  | [NYC Dept of Transportation](http://www.nyc.gov/html/dot/html/about/datafeeds.shtml)                               |
 | Parks                      | [NYC Open Data](https://data.cityofnewyork.us/City-Government/Parks-Properties/rjaj-zgq7)                          |
