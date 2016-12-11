@@ -181,6 +181,12 @@ header li {
   height:40px;
 }
 
+header .map-link li {
+  border-right:none;
+  float:none;
+  width: auto;
+}
+
 header li:first-child a {
   border-radius:5px 0 0 5px;
 }
