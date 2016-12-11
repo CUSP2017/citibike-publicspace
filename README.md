@@ -7,7 +7,7 @@ This project attempts to quantify the value of public space by investigating whe
 
 ## Reproducing Our Research
 
-1. Set up your environment variables
+### 1. Set up your environment variables
 Copy the .env example
 
 ```
@@ -16,7 +16,7 @@ cp .env-example .env
 
 Edit `.env`, adding a Google Geocoding API Key that can be acquired [here](https://developers.google.com/maps/documentation/geocoding/intro).
 
-2. Download the data
+### 2. Download the data
 To download the raw, external data, first run in the root directory of this project:
 
 ```
@@ -27,14 +27,14 @@ This will create a collection of directories under `data/` that will store all
 external and processed data. This may take a few minutes depending on the
 speed of your internet.
 
-3. Process data
+### 3. Process data
 
 Run through all notebooks in the `notebooks` folder in the order of their prefix.
 This will generate data in the `/data/processed` and `/data/map` folders to be used for analysis.
 
 >Naming convention for all notebooks in the project: order number, the creator's initials, and a short `-` delimited description, e.g. `1.0-jp-initial-data-exploration`.
 
-4. Analyze Data
+### 4. Analyze Data
 
 Run through all notebooks in the `models` folder. These notebooks will run various regressions, outputting
 our findings.
@@ -60,7 +60,6 @@ our findings.
 
 ## Data Sources
 
-|:---------------------------|:-------------------------------------------------------------------------------------------------------------------|
 | Citi Bike Docking Stations | [Citi Bike System Data](https://www.citibikenyc.com/system-data)                                                   |
 | Street Assessment Ratings  | [NYC Dept of Transportation](http://www.nyc.gov/html/dot/html/about/datafeeds.shtml)                               |
 | Parks                      | [NYC Open Data](https://data.cityofnewyork.us/City-Government/Parks-Properties/rjaj-zgq7)                          |
