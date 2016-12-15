@@ -10,7 +10,7 @@ project_dir = os.path.dirname(__file__)
 dl_path = os.path.join(project_dir, "data/external")
 
 # Create data directories if needed
-for d in ["data", "data/external", "data/interim", "data/processed"]:
+for d in ["data", "data/external", "data/interim", "data/processed", "data/map"]:
     if not os.path.exists(d):
         os.makedirs(d)
 
